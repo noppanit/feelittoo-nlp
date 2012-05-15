@@ -1,13 +1,17 @@
-1. Launch [SBT](http://code.google.com/p/simple-build-tool).
+1. Download http://nlp.stanford.edu/software/stanford-postagger-2012-03-09.tgz
+
+2. And unzip the file put classifiers folder inside the project
+
+3. Launch [SBT](http://code.google.com/p/simple-build-tool).
 
         ./sbt
 
-2. Run Jetty
+4. Run Jetty
 
         container:start
 
-3. Go to http://localhost:8080/.
+5. Go to http://localhost:8080/.
 
-4. Learn more at http://www.scalatra.org/stable/book.
+6. Learn more at http://www.scalatra.org/stable/book.
 
-5. Happy hacking!
+7. Happy hacking!

@@ -10,7 +10,8 @@ class FeelittooServletSpec extends ScalatraSpec { def is =
     
   addServlet(classOf[FeelittooServlet], "/*")
 
-  def root200 = get("/") { 
+  def root200 = get("/apple") {
     status must_== 200
+    body must_== "{'company' : 'apple'}"
   }
 }

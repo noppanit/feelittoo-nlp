@@ -5,13 +5,14 @@ import scalate.ScalateSupport
 
 class FeelittooServlet extends ScalatraServlet with ScalateSupport {
 
-  get("/") {
-    <html>
-      <body>
-        <h1>Hello, world!</h1>
-        Say <a href="hello-scalate">hello to Scalate</a>.
-      </body>
-    </html>
+  get("/:text") {
+    contentType = "application/json"
+    val text = params("text")
+    "{'company' : '%s'}".format(text)
+  }
+
+  post("/text") {
+
   }
 
   notFound {
