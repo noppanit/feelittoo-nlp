@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
 	"ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime",
 	"org.eclipse.jetty" % "jetty-webapp" % "7.6.0.v20120127" % "container",
 	"javax.servlet" % "servlet-api" % "2.5" % "provided",
+	"net.liftweb" % "lift-json_2.9.1" % "2.4",
 	"edu.stanford.nlp" % "stanford-corenlp" % "1.3.1")
 
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
