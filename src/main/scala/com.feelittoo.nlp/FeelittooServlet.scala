@@ -3,25 +3,21 @@ package com.feelittoo.nlp
 import org.scalatra._
 import scalate.ScalateSupport
 import net.liftweb.json.JsonAST._
-import net.liftweb.json.Extraction._
 import net.liftweb.json.Printer._
 import net.liftweb.json.JsonDSL._
+import edu.stanford.nlp.ie.crf.CRFClassifier
 
 class FeelittooServlet extends ScalatraServlet with ScalateSupport {
 
-  implicit val formats = net.liftweb.json.DefaultFormats
-
-  get("/:text") {
-
-    contentType = "application/json"
+  get("/text/:text") {
     val text = params("text")
-    val json = List("test")
-    pretty(render(json))
-    //    "{'company' : '%s'}".format(text)
-  }
+    contentType = "application/json"
+    val pattern = """(\w+)/ORGANIZATION""".r
 
-  post("/text") {
+    val taggedText = CRFClassifier.getClassifierNoExceptions("./classifiers/all.3class.distsim.crf.ser.gz").classifyToString(text)
+    val list = pattern.findAllIn(taggedText).matchData.map(m => m.group(1)).toList
 
+    pretty(render(list))
   }
 
   notFound {

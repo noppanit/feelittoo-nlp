@@ -10,8 +10,8 @@ class FeelittooServletSpec extends ScalatraSpec { def is =
     
   addServlet(classOf[FeelittooServlet], "/*")
 
-  def root200 = get("/apple") {
+  def root200 = get("/text/I%20love%20Google%20and%20Apple") {
     status must_== 200
-    body must_== "{'company' : 'apple'}"
+    body must_== "[\"Google\",\"Apple\"]"
   }
 }
