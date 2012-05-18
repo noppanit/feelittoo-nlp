@@ -9,13 +9,14 @@ import edu.stanford.nlp.ie.crf.CRFClassifier
 
 class FeelittooServlet extends ScalatraServlet with ScalateSupport {
 
+  private val classifier = CRFClassifier.getClassifierNoExceptions("./classifiers/english.all.3class.distsim.crf.ser.gz")
+
   get("/text/:text") {
     val text = params("text")
     contentType = "application/json"
     val pattern = """(\w+)/ORGANIZATION""".r
 
-    val taggedText = CRFClassifier.getClassifierNoExceptions("./classifiers/english.all.3class.distsim.crf.ser.gz").classifyToString(text)
-    val list = pattern.findAllIn(taggedText).matchData.map(m => m.group(1)).toList
+    val list = pattern.findAllIn(classifier.classifyToString(text)).matchData.map(m => m.group(1)).toList
 
     pretty(render(list))
   }
