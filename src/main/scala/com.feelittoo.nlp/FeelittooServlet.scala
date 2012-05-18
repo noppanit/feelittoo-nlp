@@ -14,7 +14,7 @@ class FeelittooServlet extends ScalatraServlet with ScalateSupport {
     contentType = "application/json"
     val pattern = """(\w+)/ORGANIZATION""".r
 
-    val taggedText = CRFClassifier.getClassifierNoExceptions("./classifiers/all.3class.distsim.crf.ser.gz").classifyToString(text)
+    val taggedText = CRFClassifier.getClassifierNoExceptions("./classifiers/english.all.3class.distsim.crf.ser.gz").classifyToString(text)
     val list = pattern.findAllIn(taggedText).matchData.map(m => m.group(1)).toList
 
     pretty(render(list))
