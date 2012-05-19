@@ -11,7 +11,7 @@ class FeelittooServlet extends ScalatraServlet with ScalateSupport {
 
   private val classifier = CRFClassifier.getClassifierNoExceptions("./classifiers/english.all.3class.distsim.crf.ser.gz")
 
-  get("/text/:text") {
+  post("/text") {
     val text = params("text")
     contentType = "application/json"
     val pattern = """(\w+)/ORGANIZATION""".r
