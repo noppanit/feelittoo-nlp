@@ -13,3 +13,4 @@ target/
 .idea
 .DS_Store
 classifiers/*
+models/*
